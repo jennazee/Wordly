@@ -29,7 +29,7 @@ for entry in viables:
         elif letter in temp:
             temp = temp.replace(letter, '', 1)
         else:
-            blankTo = letter
+            blankTo = blankTo+letter
             temp = temp.replace('*', '', 1)
             
     if okay:
@@ -39,13 +39,12 @@ for entry in viables:
                 val+=sc_points[tile]
             elif int(game) == 3:
                 val+=wwf_points[tile]
-            else:
-                val  = 'there are no points in this pure endeavor, silly face';
 
-        if int(game) == 2:
-            val-=sc_points[blankTo]
-        elif int(game) == 3:
-            val-=wwf_points[blankTo]
+        for piece in blankTo[1:]:
+            if int(game) == 2:
+                val-=sc_points[piece]
+            elif int(game) == 3:
+                val-=wwf_points[piece]
         matches[entry] = val
 
 if int(game) > 1:
