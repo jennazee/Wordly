@@ -10,9 +10,6 @@ print 'What game are you playing?'
 game = raw_input('Simple anagrams (i.e. Letterpress) (Press 1), Scrabble (Press 2), or Words with Friends (Press 3) ')
 letters = raw_input('What letters do you have? ("*" = blank) ').upper()
 
-if '*' in letters:
-    letters.replace('*', '[A-Z]')
-
 words = open('TWL06.txt', 'r')
 viables = [line.strip() for line in words if line[0] in letters]
 words.close()
